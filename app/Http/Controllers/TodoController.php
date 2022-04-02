@@ -9,7 +9,12 @@ class TodoController extends Controller
 {
     public function index()
     {
-        return view('index');
+        // $todos = Todo::all();
+        // $data = ['todos' => $todos];
+        // return view('index', compact('todos'));
+        // return view('index');
+        $todos = Todo::all();
+        return view('index', ['todos' => $todos]);
     }
 
     public function create(Request $request)
@@ -17,6 +22,9 @@ class TodoController extends Controller
 
         $request->validate([
             'content' => 'required|min:3'
+        ], [
+            'content.required' => '必須項目です！',
+            'content.min' => ':min 文字以上入力してください。'
         ]);
 
         $post = new Todo();
@@ -26,9 +34,21 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        return view('index');
+
+        $request->validate([
+            'content' => 'required|min:3'
+        ], [
+            'content.required' => '必須項目です！',
+            'content.min' => ':min 文字以上入力してください。'
+        ]);
+
+        $post = new Todo();
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect('/');
     }
 
     public function delete()
