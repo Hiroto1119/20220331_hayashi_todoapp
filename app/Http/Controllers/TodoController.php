@@ -26,6 +26,7 @@ class TodoController extends Controller
             'content.required' => '必須項目です！',
             'content.min' => ':min 文字以上入力してください。'
         ]);
+        // bladeファイルで定義すべき↑
 
         $post = new Todo();
         $post->content = $request->content;
@@ -37,16 +38,23 @@ class TodoController extends Controller
     public function update(Request $request)
     {
 
-        $request->validate([
-            'content' => 'required|min:3'
-        ], [
-            'content.required' => '必須項目です！',
-            'content.min' => ':min 文字以上入力してください。'
-        ]);
+        // $request->validate([
+        //     'content' => 'required|min:3'
+        // ], [
+        //     'content.required' => '必須項目です！',
+        //     'content.min' => ':min 文字以上入力してください。'
+        // ]);
 
-        $post = new Todo();
-        $post->content = $request->content;
-        $post->save();
+        // $post = new Todo();
+        // $post->content = $request->content;
+        // $post->save();
+
+        // findを使う
+        // idで検索するときはfind、それ以外（名前など）はwhereで検索
+
+        $form = $request->all();
+        unset($form['_token']);
+        Todo::find('id', $request->id)->update($form);
 
         return redirect('/');
     }
