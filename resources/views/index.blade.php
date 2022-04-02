@@ -26,17 +26,22 @@
         </tr>
 
         @foreach($todos as $todo)
-        <tr>
-            <td>{{ $todo->updated_at }}</td>
-            <td><input type="text" placeholder="{{ $todo->content }}"></td>
-            <td>
-                {{-- <a href="{{ route('/update') }}">変更</a> --}}
-                {{-- ↑
-                ここがエラー --}}
-                {{-- <a href="{{ route('/update', ['id' => $todo->id]) }}">変更</a>
-                <a href="{{ route('/delete', ['id' => $todo->id]) }}">削除</a> --}}
-            </td>
-        </tr>
+        <form action="update" method="post">
+        @csrf
+            <tr>
+                <td>{{ $todo->updated_at }}</td>
+                <td><input type="text" placeholder="{{ $todo->content }}"></td>
+                <td>
+                    <input type="submit" value="変更">
+                    {{-- <a href="{{ route('/update') }}">変更</a> --}}
+                    {{-- ↑
+                    ここがエラー --}}
+                    {{-- <a href="{{ route('/update', ['id' => $todo->id]) }}">変更</a>
+                    <a href="{{ route('/delete', ['id' => $todo->id]) }}">削除</a> --}}
+                </td>
+            </tr>
+        </form>
+
         @endforeach
 
         {{-- <tr>
