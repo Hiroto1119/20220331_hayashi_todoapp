@@ -45,7 +45,7 @@
                     <input type="submit" value="追加">
                 </form> --}}
 
-                <form action="{{ route('update', ['id' => $todos->id]) }}" method="post">
+                <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="post">
                     <input type="text" value="{{ $todo->content }}">
                     <input type="submit" value="追加">
                 </form>
