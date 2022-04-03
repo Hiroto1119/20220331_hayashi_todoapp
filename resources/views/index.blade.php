@@ -48,7 +48,7 @@
                 <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="post">
                     @method('PATCH')
                     @csrf
-                    <input type="text" name="update" value="{{ $todo->content }}">
+                    <input type="text" name="content" value="{{ $todo->content }}">
                     <input type="submit" value="追加">
                 </form>
             </td>
