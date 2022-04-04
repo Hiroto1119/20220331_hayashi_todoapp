@@ -9,10 +9,6 @@ class TodoController extends Controller
 {
     public function index()
     {
-        // $todos = Todo::all();
-        // $data = ['todos' => $todos];
-        // return view('index', compact('todos'));
-        // return view('index');
         $todos = Todo::all();
         return view('index', ['todos' => $todos]);
     }
@@ -37,24 +33,8 @@ class TodoController extends Controller
 
     public function update(Request $request)
     {
-
-        // $request->validate([
-        //     'content' => 'required|min:3'
-        // ], [
-        //     'content.required' => '必須項目です！',
-        //     'content.min' => ':min 文字以上入力してください。'
-        // ]);
-
-        // $post = new Todo();
-        // $post->content = $request->content;
-        // $post->save();
-
-        // findを使う
-        // idで検索するときはfind、それ以外（名前など）はwhereで検索
-
         $form = $request->all();
         unset($form['_token']);
-        // Todo::find('id', $request->id)->update($form);
 
         $update = Todo::find($request->id);
         $update->content = $request->content;
@@ -63,8 +43,11 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function delete()
+    public function delete(Request $request)
     {
-        return view('index');
+        $delete = Todo::find($request->id);
+        $delete->delete();
+
+        return redirect('/');
     }
 }
