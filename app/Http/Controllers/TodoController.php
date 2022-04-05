@@ -33,6 +33,13 @@ class TodoController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'content' => 'required|min:3'
+        ], [
+            'content.required' => '必須項目です！',
+            'content.min' => ':min 文字以上入力してください。'
+        ]);
+
         $form = $request->all();
         unset($form['_token']);
 
