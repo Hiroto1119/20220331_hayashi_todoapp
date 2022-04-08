@@ -1,0 +1,84 @@
+body {
+    background-color: purple;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 60%;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.error {
+    margin-bottom: 15px;
+    background-color: darkgrey;
+    width: 30%;
+    text-align: center;
+}
+
+/* 追加フォーム */
+
+.addForm {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.addInput {
+    width: 80%;
+    height: 35px;
+}
+
+.addButton {
+    width: 10%;
+    color: blueviolet;
+    background-color: white;
+    border-color: blueviolet;
+    border-radius: 5px;
+}
+
+/* 更新削除フォーム */
+
+table {
+    width: 100%;
+    /* table-layout: fixed; */
+}
+
+.tableHeader {
+    margin-bottom: 10px;
+}
+
+.headerCreateDate {
+    /* text-align: center; */
+}
+
+.headerTaskName {
+    /* width: 20%; */
+}
+
+tr {
+    /* display: flex;
+    justify-content: space-around; */
+}
+
+.updateInput {
+    height: 25px;
+}
+
+.updateButton {
+    color: chocolate;
+    background-color: white;
+    border-color: chocolate;
+    border-radius: 5px;
+}
+
+.deleteButton {
+    color: rgb(146, 252, 211);
+    background-color: white;
+    border-color: rgb(146, 252, 211);
+    border-radius: 5px;
+}

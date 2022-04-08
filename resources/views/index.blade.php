@@ -4,58 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    <h1>TODOアプリ</h1>
-
-    <form action="create" method="post">
-        @csrf
-        <label for="content">TODO</label>
-        <input type="text" id="content" name="content" value="{{ old('content') }}">
-        <input type="submit" value="追加">
+    <div class="container">
+        <h1>TODOアプリ</h1>
         @error('content')
             <div class="error">{{ $message }}</div>
         @enderror
-    </form>
+        <form action="create" method="post" class="addForm">
+            @csrf
+            {{-- <label for="content">TODO</label> --}}
+            <input type="text" id="content" name="new_content" class="addInput" value = "{{ old('new_content') }}">
+            <input type="submit" value="追加" class="addButton">
+        </form>
 
-    <table>
-        <tr>
-            <th>作成日</th>
-            <th>タスク名</th>
-        </tr>
+        <table>
+            <tr class="tableHeader">
+                <th class="headerCreateDate">作成日</th>
+                <th class="headerTaskName">タスク名</th>
+                <th class="headerUpdate">更新</th>
+                <th class="headerDelete">削除</th>
+            </tr>
 
-        @foreach($todos as $todo)
-        <tr>
-            <td>
-                {{ $todo->updated_at }}
-            </td>
+            @foreach($todos as $todo)
+            <tr>
+                <td class="itemCreateDate">
+                    {{ $todo->updated_at }}
+                </td>
 
-            <td>
-                <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="post">
-                    @csrf
-                    <input type="text" name="content" value="{{ $todo->content }}">
-                    <input type="submit" value="追加">
+                <td>
+                    <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="post">
+                        @csrf
+                        <input type="text" name="content" value="{{ $todo->content }}" class="updateInput">
+                        <input type="submit" value="追加" class="updateButton">
+                    </form>
+                </td>
 
-                    @error('content')
-                        <div class="error">{{ $message }}</div>
-                    @enderror
-
-                </form>
-            </td>
-
-            <td>
-                <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="post">
-                    @csrf
-                    <input type="submit" value="削除">
-                </form>
-            </td>
-
-            <td>
-
-            </td>
-        </tr>
-        @endforeach
-    </table>
+                <td>
+                    <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="post">
+                        @csrf
+                        <input type="submit" value="削除" class="deleteButton">
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
 </body>
 </html>
