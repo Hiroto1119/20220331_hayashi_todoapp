@@ -17,15 +17,15 @@ class TodoController extends Controller
     {
 
         $request->validate([
-            'content' => 'required|min:3'
+            'new_content' => 'required|min:3'
         ], [
-            'content.required' => '必須項目です！',
-            'content.min' => ':min 文字以上入力してください。'
+            'new_content.required' => '必須項目です！',
+            'new_content.min' => ':min 文字以上入力してください。'
         ]);
         // bladeファイルで定義すべき↑
 
         $post = new Todo();
-        $post->content = $request->content;
+        $post->content = $request->new_content;
         $post->save();
 
         return redirect('/');

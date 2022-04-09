@@ -13,6 +13,9 @@
         @error('content')
             <div class="error">{{ $message }}</div>
         @enderror
+        @error('new_content')
+            <div class="error">{{ $message }}</div>
+        @enderror
         <form action="create" method="post" class="addForm">
             @csrf
             {{-- <label for="content">TODO</label> --}}
