@@ -20,8 +20,8 @@ class TodoController extends Controller
             'new_content' => 'required|min:3|max:20'
         ], [
             'new_content.required' => '必須項目です！',
-            'new_content.min' => ':min 文字以上入力してください。'
-            // 'new_content.max' => ':max 文字以下で入力しください。'
+            'new_content.min' => ':min 文字以上入力してください。',
+            'new_content.max' => ':max 文字以下で入力しください。'
         ]);
         // bladeファイルで定義すべき↑
 
@@ -38,8 +38,8 @@ class TodoController extends Controller
             'content' => 'required|min:3|max:20'
         ], [
             'content.required' => '必須項目です！',
-            'content.min' => ':min 文字以上入力してください。'
-            // 'content.max' => ':max 文字以下で入力しください。'
+            'content.min' => ':min 文字以上入力してください。',
+            'content.max' => ':max 文字以下で入力しください。'
         ]);
 
         $form = $request->all();
