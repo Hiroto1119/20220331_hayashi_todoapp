@@ -1,3 +1,5 @@
+/* ここまでリセットCSS */
+
 body {
     background-color: purple;
     height: 100vh;
@@ -45,11 +47,10 @@ body {
 
 table {
     width: 100%;
-    /* table-layout: fixed; */
 }
 
 .tableHeader {
-    margin-bottom: 10px;
+    /* padding: 500px; */
 }
 
 .headerCreateDate {
@@ -60,13 +61,21 @@ table {
     /* width: 20%; */
 }
 
-tr {
-    /* display: flex;
-    justify-content: space-around; */
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+.itemCreateDate {
+    width: 30%;
 }
 
 .updateInput {
     height: 25px;
+    width: 80%;
 }
 
 .updateButton {
@@ -74,6 +83,11 @@ tr {
     background-color: white;
     border-color: chocolate;
     border-radius: 5px;
+    border-style: solid;
+    height: 40px;
+    width: 70%;
+    margin-right: auto;
+    /* margin-left: 20px; */
 }
 
 .deleteButton {
@@ -81,4 +95,8 @@ tr {
     background-color: white;
     border-color: rgb(146, 252, 211);
     border-radius: 5px;
+    border-style: solid;
+    height: 40px;
+    width: 70%;
+    /* margin-right: auto; */
 }
